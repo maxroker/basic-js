@@ -1,7 +1,8 @@
 const CustomError = require("../extensions/custom-error");
 
 module.exports = function calculateHanoi(disksNumber, turnsSpeed) {
-  const turns = 2 ** disksNumber - 1;
-  const seconds = Math.floor((turns / turnsSpeed) * 60 * 60);
-  return { turns, seconds };
+  let t = 2 ** disksNumber - 1;
+  let s = Math.floor((t / turnsSpeed) * 60 * 60);
+  const obj = { turns: t, seconds: s };
+  return obj;
 };
