@@ -3,14 +3,9 @@ const CustomError = require("../extensions/custom-error");
 module.exports = function getSeason(date) {
   if (!date) return "Unable to determine the time of year!";
 
-  if (
-    !(date instanceof Date) ||
-    !date.toDateString() ||
-    !date.getTimezoneOffset()
-    // (date.getYear() > 1970 && !date.getUTCMonth())
-  ) {
-    throw new Error("THROWN");
-  }
+  let checkClass = (data) => ({}.toString.call(data).slice(8, -1));
+  if (checkClass(date) !== "Date") throw new Error();
+
   let month = date.getMonth();
   season = "";
   switch (month) {
